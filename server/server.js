@@ -7,8 +7,8 @@ var express = require("express"),
 
 // SERVER CONFIGURATION
 // ====================
-server.configure(function () {
-
+var env = process.env.NODE_ENV || 'development';
+if ('development' == env) {
     server.use(express["static"](__dirname + "/../public"));
 
     server.use(express.errorHandler({
@@ -20,7 +20,7 @@ server.configure(function () {
     }));
 
     server.use(server.router);
-});
+}
 
 // SERVER
 // ======
